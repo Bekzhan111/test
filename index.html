@@ -57,7 +57,15 @@
       // Initialize the FirebaseUI Widget using Firebase.
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       // The start method will wait until the DOM is loaded.
-      ui.start("#firebaseui-auth-container", uiConfig);
+      ui.start('#firebaseui-auth-container', {
+      signInOptions: [
+        {
+          provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+          // The default selected country.
+          defaultCountry: 'KZ'
+        }
+      ]
+    });
 
       window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
         ".submit",
