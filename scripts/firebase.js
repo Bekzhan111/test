@@ -1,33 +1,36 @@
-if()
+const submitbtn = document.querySelector(".const salon1form = document.querySelector(".salon");");
+submitbtn.addEventListener("click", () => {
+const salon1form = document.querySelector(".salon");
+const master1form = document.querySelector(".master");
+
+if(master1form.classList.contains('hide')){
 const form = document.getElementById("add-salon");
-form.addEventListener("submit", (e) => {
   var notifications = document.getElementById("notification1");
   if (notifications.checked) {
     notifications.value = true;
   } else {
     notifications.value = false;
-  }
-  e.preventDefault();
+  };
+    const phone_number = document.querySelector(".firebaseui-input");
   db.collection("salons").add({
     full_name: form.full_name.value,
     email: form.email.value,
     salon_name: form.salonname.value,
-    phone_number: form.phone_number.value,
+    phone_number: phone_number.value,
     notifications: form.notifications.value,
     password: form.password.value
   });
   form.reset();
-});
-
-const masterForm = document.getElementById("add-master");
-masterForm.addEventListener("submit", (event) => {
+}
+else{
+  const masterForm = document.getElementById("add-master");
   var notifications = document.getElementById("notification2");
   if (notifications.checked) {
     notifications.value = true;
   } else {
     notifications.value = false;
-  }
-  event.preventDefault();
+  };
+    const phone_number = document.querySelector(".firebaseui-input");
   db.collection("masters").add({
     full_name: masterForm.full_name.value,
     email: masterForm.email.value,
@@ -37,4 +40,5 @@ masterForm.addEventListener("submit", (event) => {
     notifications: masterForm.notifications.value
   });
   masterForm.reset();
-});
+};
+)};
