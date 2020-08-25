@@ -1,4 +1,4 @@
-const submitbtn = document.querySelector(".const salon1form = document.querySelector(".salon");");
+const submitbtn = document.querySelector(".firebaseui-button");
 submitbtn.addEventListener("click", () =>{
 const salon1form = document.querySelector(".salon");
 const master1form = document.querySelector(".master");
