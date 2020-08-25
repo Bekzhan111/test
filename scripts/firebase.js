@@ -1,5 +1,5 @@
-const submitbtn = document.querySelector(".firebaseui-button");
-submitbtn.addEventListener("click", () => {
+const submitbtn = document.querySelector(".const salon1form = document.querySelector(".salon");");
+submitbtn.addEventListener("click", () =>{
 const salon1form = document.querySelector(".salon");
 const master1form = document.querySelector(".master");
 
@@ -41,4 +41,4 @@ else{
   });
   masterForm.reset();
 };
-)};
+    } );
