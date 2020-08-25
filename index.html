@@ -866,12 +866,49 @@ confirmationResult.confirm(code).then(function (result) {
   // User signed in successfully.
   var user = result.user;
   // ...
+  if(master1form.classList.contains('hide')){
+const form = document.getElementById("add-salon");
+  var notifications = document.getElementById("notification1");
+  if (notifications.checked) {
+    notifications.value = true;
+  } else {
+    notifications.value = false;
+  };
+    const phone_number = document.querySelector(".firebaseui-input");
+  db.collection("salons").add({
+    full_name: form.full_name.value,
+    email: form.email.value,
+    salon_name: form.salonname.value,
+    phone_number: phone_number.value,
+    notifications: form.notifications.value,
+    password: form.password.value
+  });
+  form.reset();
+}
+else{
+  const masterForm = document.getElementById("add-master");
+  var notifications = document.getElementById("notification2");
+  if (notifications.checked) {
+    notifications.value = true;
+  } else {
+    notifications.value = false;
+  };
+    const phone_number = document.querySelector(".firebaseui-input");
+  db.collection("masters").add({
+    full_name: masterForm.full_name.value,
+    email: masterForm.email.value,
+    salon_name: masterForm.salonname.value,
+    phone_number: phone_number.value,
+    password: masterForm.password.value,
+    notifications: masterForm.notifications.value
+  });
+  masterForm.reset();
+};
 }).catch(function (error) {
   // User couldn't sign in (bad verification code?)
   // ...
 });
     </script>
-<script type="text/javascript" src="scripts/firebase.js"></script>
     <script type="text/javascript" src="scripts/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
