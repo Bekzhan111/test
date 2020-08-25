@@ -35,7 +35,7 @@ else{
     full_name: masterForm.full_name.value,
     email: masterForm.email.value,
     salon_name: masterForm.salonname.value,
-    phone_number: masterForm.phone_number.value,
+    phone_number: phone_number.value,
     password: masterForm.password.value,
     notifications: masterForm.notifications.value
   });
