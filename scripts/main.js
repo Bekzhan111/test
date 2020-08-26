@@ -1,6 +1,6 @@
 const form = document.getElementById("add-salon");
 const phoneform = document.getElementById("phone_form");
-const userSignup= document.querySelector(".user-signup");
+const userSignup= document.querySelector(".user-signup1");
 form.addEventListener("submit", (e) => {
     userSignup.classList.remove('hide');
  var notifications = document.getElementById("notification1");
@@ -41,7 +41,14 @@ function phoneAuth(){
 function codeverify(){
     var code=document.getElementById('verificationCode').value;
     coderesult.confirm(code).then(function(result){
-          db.collection("salons").add({
+        
+        var user=result.user;
+        console.log(user);
+    }).catch(function(error){
+        alert("Неверный код");
+    });
+}
+  db.collection("salons").add({
     full_name: form.full_name.value,
     email: form.email.value,
     salon_name: form.salonname.value,
@@ -49,13 +56,6 @@ function codeverify(){
     notifications: form.notifications.value,
     password: form.password.value
   });
-        var user=result.user;
-        console.log(user);
-    }).catch(function(error){
-        alert("Неверный код");
-    });
-}
-
 });
 
 

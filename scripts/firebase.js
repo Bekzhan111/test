@@ -1,6 +1,6 @@
 const form = document.getElementById("add-salon");
 const phoneform = document.getElementById("phone_form");
-const userSignup= document.querySelector(".user-signup");
+const userSignup= document.querySelector(".user-signup1");
 form.addEventListener("submit", (e) => {
     userSignup.classList.remove('hide');
  var notifications = document.getElementById("notification1");
