@@ -1,44 +1,55 @@
-const submitbtn = document.querySelector(".firebaseui-button");
-submitbtn.addEventListener("click", () =>{
-const salon1form = document.querySelector(".salon");
-const master1form = document.querySelector(".master");
-
-if(master1form.classList.contains('hide')){
 const form = document.getElementById("add-salon");
-  var notifications = document.getElementById("notification1");
+const phoneform = document.getElementById("phone_form");
+const userSignup= document.querySelector(".user-signup");
+form.addEventListener("submit", (e) => {
+    userSignup.classList.remove('hide');
+ var notifications = document.getElementById("notification1");
   if (notifications.checked) {
     notifications.value = true;
   } else {
     notifications.value = false;
-  };
-    const phone_number = document.querySelector(".firebaseui-input");
+  }
+  e.preventDefault();
   db.collection("salons").add({
     full_name: form.full_name.value,
     email: form.email.value,
     salon_name: form.salonname.value,
-    phone_number: phone_number.value,
+    phone_number: phoneform.phone_number.value,
     notifications: form.notifications.value,
     password: form.password.value
   });
-  form.reset();
-}
-else{
-  const masterForm = document.getElementById("add-master");
+});
+userSignup.addEventListener("click", (event) => {
+  const target = event.target;
+
+  if (target.classList.contains("modal-close") || target === userSignup) {
+    userSignup.classList.add("hide");
+  }
+});
+
+var modal = document.querySelector(".user-signup");
+window.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    userSignup.classList.add("hide");
+  }
+});
+
+const masterForm = document.getElementById("add-master");
+masterForm.addEventListener("submit", (event) => {
   var notifications = document.getElementById("notification2");
   if (notifications.checked) {
     notifications.value = true;
   } else {
     notifications.value = false;
-  };
-    const phone_number = document.querySelector(".firebaseui-input");
+  }
+  event.preventDefault();
   db.collection("masters").add({
     full_name: masterForm.full_name.value,
     email: masterForm.email.value,
     salon_name: masterForm.salonname.value,
-    phone_number: phone_number.value,
+    phone_number: phoneform.phone_number.value,
     password: masterForm.password.value,
     notifications: masterForm.notifications.value
   });
   masterForm.reset();
-};
-    } );
+});
