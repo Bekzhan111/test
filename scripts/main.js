@@ -22,33 +22,32 @@ form.addEventListener("submit", (e) => {
     userSignup.classList.add("hide");
   }
 });
-window.onload=function(){
-    render();
+window.onload=function () {
+  render();
 };
-function render(){
-    window.recaptchaVerifier=new firebase.auth.RecaptchaVerifier("recaptcha-container");
+function render() {
+    window.recaptchaVerifier=new firebase.auth.RecaptchaVerifier('recaptcha-container');
     recaptchaVerifier.render();
 }
-function phoneAuth(){
+function phoneAuth() {
+    //get the number
     var number=document.getElementById('number').value;
-    firebase.auth().SignInWithPhoneNumber(number, window.recaptchaVerifier).then(function(confirmationResult){
+    //phone number authentication function of firebase
+    //it takes two parameter first one is number,,,second one is recaptcha
+    firebase.auth().signInWithPhoneNumber(number,window.recaptchaVerifier).then(function (confirmationResult) {
+        //s is in lowercase
         window.confirmationResult=confirmationResult;
         coderesult=confirmationResult;
         console.log(coderesult);
-        alert("Код отправлен")
+        alert("Message sent");
+    }).catch(function (error) {
+        alert(error.message);
     });
 }
-function codeverify(){
+function codeverify() {
     var code=document.getElementById('verificationCode').value;
-    coderesult.confirm(code).then(function(result){
-        
-        var user=result.user;
-        console.log(user);
-    }).catch(function(error){
-        alert("Неверный код");
-    });
-}
-  db.collection("salons").add({
+    coderesult.confirm(code).then(function (result) {
+          db.collection("salons").add({
     full_name: form.full_name.value,
     email: form.email.value,
     salon_name: form.salonname.value,
@@ -56,6 +55,13 @@ function codeverify(){
     notifications: form.notifications.value,
     password: form.password.value
   });
+        var user=result.user;
+        console.log(user);
+    }).catch(function (error) {
+        alert(error.message);
+    });
+}
+
 });
 
 
