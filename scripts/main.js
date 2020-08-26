@@ -41,14 +41,7 @@ function phoneAuth(){
 function codeverify(){
     var code=document.getElementById('verificationCode').value;
     coderesult.confirm(code).then(function(result){
-        
-        var user=result.user;
-        console.log(user);
-    }).catch(function(error){
-        alert("Неверный код");
-    });
-}
-  db.collection("salons").add({
+          db.collection("salons").add({
     full_name: form.full_name.value,
     email: form.email.value,
     salon_name: form.salonname.value,
@@ -56,6 +49,13 @@ function codeverify(){
     notifications: form.notifications.value,
     password: form.password.value
   });
+        var user=result.user;
+        console.log(user);
+    }).catch(function(error){
+        alert("Неверный код");
+    });
+}
+
 });
 
 
