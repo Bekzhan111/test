@@ -16,14 +16,14 @@ body {
   justify-content: center;
 }
 .modal__block {
-  width: 35%;;
-  height: 95%;;
+  width: 35%;
+  height: 95%;
   background-color: #fff;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-    border-radius: 40px;
+  border-radius: 40px;
 }
 .modal-close {
   position: absolute;
@@ -31,8 +31,8 @@ body {
   right: 30px;
   background-color: transparent;
   border-color: transparent;
-font-size: 25px;
-    cursor: pointer;
+  font-size: 25px;
+  cursor: pointer;
 }
 .center {
   position: absolute;
