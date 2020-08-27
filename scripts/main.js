@@ -1,6 +1,24 @@
+ const db = firebase.firestore();
 const form = document.getElementById("add-salon");
 const phoneform = document.getElementById("phone_form");
 const userSignup = document.querySelector(".user-signup1");
+
+form.addEventListener("submit", (e) => {
+  userSignup.classList.remove("hide");
+  e.preventDefault();
+  var notifications = document.getElementById("notification1");
+  if (notifications.checked) {
+    notifications.value = true;
+  } else {
+    notifications.value = false;
+  }
+ 
+});
+   window.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      userSignup.classList.add("hide");
+    }
+  });
 
 window.onload = function () {
   render();
@@ -39,33 +57,15 @@ function codeverify() {
       var user = result.user;
       console.log(user);
       db.collection("salons").add({
-        full_name: form.full_Name.value,
+        full_name: form.full_name.value,
         email: form.email.value,
-        salon_name: salonname.value,
+        salon_name: form.salonname.value,
         phone_number: phoneform.phone_number.value,
         notifications: form.notifications.value,
-        password: form.password.value,
+        password: form.password.value
       });
     })
     .catch(function (error) {
       alert(error.message);
     });
-
-  e.preventDefault();
-  window.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      userSignup.classList.add("hide");
-    }
-  });
 }
-
-form.addEventListener("submit", (e) => {
-  userSignup.classList.remove("hide");
-  e.preventDefault();
-  var notifications = document.getElementById("notification1");
-  if (notifications.checked) {
-    notifications.value = true;
-  } else {
-    notifications.value = false;
-  }
-});
