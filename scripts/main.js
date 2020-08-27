@@ -1,18 +1,18 @@
  const salons = document.querySelector(".salons1");
 const masters = document.querySelector(".masters1");
 const salonform = document.querySelector(".salon");
-const masterform = document.querySelector(".master");
+const masterForm = document.querySelector(".master");
 
 salons.addEventListener("click", () => {
 salons.classList.add("isactive");
   salonform.classList.remove("hide");
   masters.classList.remove("isactive");
-  masterform.classList.add("hide");
+  masterForm.classList.add("hide");
 });
 
 masters.addEventListener("click", () => {
   masters.classList.add("isactive");
-  masterform.classList.remove("hide");
+  masterForm.classList.remove("hide");
   salons.classList.remove("isactive");
   salonform.classList.add("hide");
 });
@@ -106,12 +106,12 @@ function codeverify() {
         notification.value = false;
       };
       db.collection("masters").add({
-        full_name: form.full_name.value,
-        email: form.email.value,
-        salon_name: form.salonname.value,
+        full_name: masterform.full_name.value,
+        email: masterform.email.value,
+        salon_name: masterform.salonname.value,
         phone_number: phoneform.phone_number.value,
         notifications: notification.value,
-        password: form.password.value
+        password: masterform.password.value
       });
       userSignup.classList.add("hide");
    };
