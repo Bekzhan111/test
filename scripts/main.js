@@ -7,12 +7,6 @@ form.addEventListener("submit", (e) => {
   userSignup.classList.remove("hide");
   e.preventDefault();
 });
-var notifications = document.getElementById("notification1");
-  if (notifications.checked) {
-    notifications.value = true;
-  } else {
-    notifications.value = false;
-  };
    window.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
       userSignup.classList.add("hide");
@@ -62,7 +56,13 @@ function codeverify() {
     .then(function (result) {
       var user = result.user;
       console.log(user);
-   alert("Вы зарегистрировались");
+      alert("Вы зарегистрировались");
+      var notifications = document.getElementById("notification1");
+      if (notifications.checked) {
+        notifications.value = true;
+      } else {
+        notifications.value = false;
+      };
       db.collection("salons").add({
         full_name: form.full_name.value,
         email: form.email.value,
