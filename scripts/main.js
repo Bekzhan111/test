@@ -69,13 +69,7 @@ form.addEventListener("submit", (e) => {
   var password = document.getelementbyName(password).value;
   var notifications = document.getelementbyName(notifications).value;
 
-
   e.preventDefault();
-  window.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      userSignup.classList.add("hide");
-    }
-  });
 }
   userSignup.addEventListener("click", (event) => {
     const target = event.target;
@@ -83,4 +77,9 @@ form.addEventListener("submit", (e) => {
     if (target.classList.contains("modal-close") || target === userSignup) {
       userSignup.classList.add("hide");
     }
+  window.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      userSignup.classList.add("hide");
+    }
   });
+  })
