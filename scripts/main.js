@@ -9,28 +9,6 @@ function render() {
     window.recaptchaVerifier=new firebase.auth.RecaptchaVerifier('recaptcha-container');
     recaptchaVerifier.render();
 }
-
-form.addEventListener("submit", (e) => {
-    userSignup.classList.remove('hide');
- var notifications = document.getElementById("notification1");
-  if (notifications.checked) {
-    notifications.value = true;
-  } else {
-    notifications.value = false;
-  }
-  e.preventDefault();
-    window.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
-    userSignup.classList.add("hide");
-  }
-}); 
-    userSignup.addEventListener("click", (event) => {
-  const target = event.target;
-
-  if (target.classList.contains("modal-close") || target === userSignup) {
-    userSignup.classList.add("hide");
-  }
-});
 function phoneAuth() {
     //get the number
     var number=document.getElementById('number').value;
@@ -46,6 +24,29 @@ function phoneAuth() {
         alert(error.message);
     });
 }
+
+form.addEventListener("submit", (e) => {
+    userSignup.classList.remove('hide');
+    var notifications = document.getElementById("notification1");
+      if (notifications.checked) {
+        notifications.value = true;
+      } else {
+        notifications.value = false;
+      }
+      e.preventDefault();
+        window.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        userSignup.classList.add("hide");
+      } 
+    }); 
+  
+    userSignup.addEventListener("click", (event) => {
+    const target = event.target;
+
+  if (target.classList.contains("modal-close") || target === userSignup) {
+    userSignup.classList.add("hide");
+  }
+});
 function codeverify() {
     var code=document.getElementById('verificationCode').value;
     coderesult.confirm(code).then(function (result) {
