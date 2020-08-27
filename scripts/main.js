@@ -36,9 +36,9 @@ form.addEventListener("submit", (e) => {
         if (firestoreEmail == sEmail.value) {
           x = true;
         }
+  console.log(firestoreEmail);
       });
     });
-  console.log(firestoreEmail);
     if (!x) {
       alert("Пользователь с такой почтой уже существует");
     } else {
@@ -58,9 +58,9 @@ masterForm.addEventListener("submit", (o) => {
         if (firestoreMEmail == mEmail.value) {
           x = true;
         }
+        console.log(firestoreMEmail);
       });
     });  
-  console.log(firestoreMEmail);
   if (!x) {
       alert("Пользователь с такой почтой уже существует");
     } else {
