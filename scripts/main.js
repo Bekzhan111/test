@@ -1,4 +1,22 @@
- const db = firebase.firestore();
+ const salons = document.querySelector(".salons1");
+const masters = document.querySelector(".masters1");
+const salonform = document.querySelector(".salon");
+const masterform = document.querySelector(".master");
+
+salons.addEventListener("click", () => {
+salons.classList.add("isactive");
+  salonform.classList.remove("hide");
+  masters.classList.remove("isactive");
+  masterform.classList.add("hide");
+});
+
+masters.addEventListener("click", () => {
+  masters.classList.add("isactive");
+  masterform.classList.remove("hide");
+  salons.classList.remove("isactive");
+  salonform.classList.add("hide");
+});
+const db = firebase.firestore();
 const form = document.getElementById("add-salon");
 const masterform = document.getElementById("add-master");
 const phoneform = document.getElementById("phone_form");
