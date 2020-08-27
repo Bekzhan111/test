@@ -2,7 +2,6 @@ const form = document.getElementById("add-salon");
 const phoneform = document.getElementById("phone_form");
 const userSignup = document.querySelector(".user-signup1");
 
-
 window.onload = function () {
   render();
 };
@@ -40,12 +39,12 @@ function codeverify() {
       var user = result.user;
       console.log(user);
       db.collection("salons").add({
-        full_name: fullName,
-        email: email,
-        salon_name: salonname,
+        full_name: form.full_Name.value,
+        email: form.email.value,
+        salon_name: salonname.value,
         phone_number: phoneform.phone_number.value,
-        notifications: notifications,
-        password: password,
+        notifications: form.notifications.value,
+        password: form.password.value,
       });
     })
     .catch(function (error) {
@@ -69,16 +68,4 @@ form.addEventListener("submit", (e) => {
   } else {
     notifications.value = false;
   }
-
-  var fullName = document.getElementById("full_name").value;
-  var salonname = document.getElementById("salonname").value;
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
-
-  console.log(fullName);
-  console.log(salonname);
-  console.log(email);
-  console.log(password);
-  console.log(notifications.value);
-
 });
