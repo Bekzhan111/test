@@ -20,33 +20,46 @@ const db = firebase.firestore();
 const form = document.getElementById("add-salon");
 const phoneform = document.getElementById("phone_form");
 const userSignup = document.querySelector(".user-signup1");
+var x = new Boolean(false);
 
 form.addEventListener("submit", (e) => {
-  function renderEmail(doc) {
-    let firestoreEmail = doc.data().email;
-    let sEmail = document.querySelector(".s-email");
-  }
+  let sEmail = document.querySelector(".s-email");
 
   db.collection("salons")
     .get()
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
-        renderEmail(doc);
+        let firestoreEmail = doc.data().email;
+        if (firestoreEmail === sEmail) {
+          x = true;
+        }
       });
     });
+  if (x) {
+    userSignup.classList.remove("hide");
+  } else {
+    alert("Пользователь с такой почтой уже существует");
+  }
+  e.preventDefault();
+});
+masterForm.addEventListener("submit", (o) => {
+  let mEmail = document.querySelector(".m-email");
 
   db.collection("masters")
     .get()
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
-        renderEmail(doc);
+        let firestoreMEmail = doc.data().email;
+        if (firestoreMEmail === mEmail) {
+          x = true;
+        }
       });
     });
-  userSignup.classList.remove("hide");
-  e.preventDefault();
-});
-masterForm.addEventListener("submit", (o) => {
-  userSignup.classList.remove("hide");
+  if (x) {
+    userSignup.classList.remove("hide");
+  } else {
+    alert("Пользователь с такой почтой уже существует");
+  }
   o.preventDefault();
 });
 
