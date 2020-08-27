@@ -32,7 +32,7 @@ form.addEventListener("submit", (e) => {
     .get()
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
-        let firestoreEmail = doc.data().email;
+        var firestoreEmail = doc.data().email;
         if (firestoreEmail == sEmail.value) {
           x = true;
         }
@@ -54,7 +54,7 @@ masterForm.addEventListener("submit", (o) => {
     .get()
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
-        let firestoreMEmail = doc.data().email;
+        var firestoreMEmail = doc.data().email;
         if (firestoreMEmail == mEmail.value) {
           x = true;
         }
