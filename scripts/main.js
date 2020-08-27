@@ -16,6 +16,7 @@ masters.addEventListener("click", () => {
   salons.classList.remove("isactive");
   salonform.classList.add("hide");
 });
+
 const db = firebase.firestore();
 const form = document.getElementById("add-salon");
 const phoneform = document.getElementById("phone_form");
@@ -56,9 +57,9 @@ masterForm.addEventListener("submit", (o) => {
       });
     });
   if (x) {
-    userSignup.classList.remove("hide");
-  } else {
     alert("Пользователь с такой почтой уже существует");
+  } else {
+    userSignup.classList.remove("hide");
   }
   o.preventDefault();
 });
