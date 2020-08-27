@@ -1,4 +1,5 @@
 const db = firebase.firestore();
+db.settings({ timestampsInSnapshots: true});
 const salons = document.querySelector(".salons1");
 const masters = document.querySelector(".masters1");
 const salonform = document.querySelector(".salon");
