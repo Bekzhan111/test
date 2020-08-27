@@ -18,6 +18,13 @@ var notifications = document.getElementById("notification1");
       userSignup.classList.add("hide");
     }
   });
+userSignup.addEventListener("click", (event) => {
+  const target = event.target;
+
+  if (target.classList.contains("modal-close") || target === userSignup) {
+    userSignup.classList.add("hide");
+  }
+});
 
 window.onload = function () {
   render();
@@ -41,7 +48,7 @@ function phoneAuth() {
       window.confirmationResult = confirmationResult;
       coderesult = confirmationResult;
       console.log(coderesult);
-      alert("Message sent");
+      alert("Код отправлен");
     })
     .catch(function (error) {
       alert(error.message);
@@ -55,6 +62,7 @@ function codeverify() {
     .then(function (result) {
       var user = result.user;
       console.log(user);
+   alert("Вы зарегистрировались");
       db.collection("salons").add({
         full_name: form.full_name.value,
         email: form.email.value,
