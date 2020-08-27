@@ -37,10 +37,10 @@ form.addEventListener("submit", (e) => {
         }
       });
     });
-    if (x) {
-      userSignup.classList.remove("hide");
-    } else {
+    if (!x) {
       alert("Пользователь с такой почтой уже существует");
+    } else {
+      userSignup.classList.remove("hide");
     }
  
 });
@@ -57,10 +57,10 @@ masterForm.addEventListener("submit", (o) => {
         }
       });
     });  
-  if (x) {
-      userSignup.classList.remove("hide");
-    } else {
+  if (!x) {
       alert("Пользователь с такой почтой уже существует");
+    } else {
+      userSignup.classList.remove("hide");
     }
   o.preventDefault();
 });
