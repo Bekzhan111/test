@@ -38,6 +38,7 @@ form.addEventListener("submit", (e) => {
         }
       });
     });
+  console.log(firestoreEmail);
     if (!x) {
       alert("Пользователь с такой почтой уже существует");
     } else {
@@ -59,6 +60,7 @@ masterForm.addEventListener("submit", (o) => {
         }
       });
     });  
+  console.log(firestoreMEmail);
   if (!x) {
       alert("Пользователь с такой почтой уже существует");
     } else {
