@@ -1,10 +1,10 @@
- const salons = document.querySelector(".salons1");
+const salons = document.querySelector(".salons1");
 const masters = document.querySelector(".masters1");
 const salonform = document.querySelector(".salon");
 const masterForm = document.querySelector(".master");
 
 salons.addEventListener("click", () => {
-salons.classList.add("isactive");
+  salons.classList.add("isactive");
   salonform.classList.remove("hide");
   masters.classList.remove("isactive");
   masterForm.classList.add("hide");
@@ -29,11 +29,11 @@ masterForm.addEventListener("submit", (o) => {
   userSignup.classList.remove("hide");
   o.preventDefault();
 });
-   window.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      userSignup.classList.add("hide");
-    }
-  });
+window.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    userSignup.classList.add("hide");
+  }
+});
 userSignup.addEventListener("click", (event) => {
   const target = event.target;
 
@@ -78,42 +78,41 @@ function codeverify() {
     .then(function (result) {
       var user = result.user;
       console.log(user);
-   if(masterForm.classlist.contains("hide")){
-      alert("Вы зарегистрировались");
-      var notifications = document.getElementById("notification1");
-      if (notifications.checked) {
-        notifications.value = true;
+      if (masterForm.classList.contains("hide")) {
+        alert("Вы зарегистрировались");
+        var notifications = document.getElementById("notification1");
+        if (notifications.checked) {
+          notifications.value = true;
+        } else {
+          notifications.value = false;
+        }
+        db.collection("salons").add({
+          full_name: form.full_name.value,
+          email: form.email.value,
+          salon_name: form.salonname.value,
+          phone_number: phoneform.phone_number.value,
+          notifications: notifications.value,
+          password: form.password.value,
+        });
+        userSignup.classList.add("hide");
       } else {
-        notifications.value = false;
-      };
-      db.collection("salons").add({
-        full_name: form.full_name.value,
-        email: form.email.value,
-        salon_name: form.salonname.value,
-        phone_number: phoneform.phone_number.value,
-        notifications: notifications.value,
-        password: form.password.value
-      });
-      userSignup.classList.add("hide");
-   }
-   else{
-         alert("Вы зарегистрировались");
-      var notification = document.getElementById("notification2");
-      if (notification.checked) {
-        notification.value = true;
-      } else {
-        notification.value = false;
-      };
-      db.collection("masters").add({
-        full_name: masterForm.full_name.value,
-        email: masterForm.email.value,
-        salon_name: masterForm.salonname.value,
-        phone_number: phoneform.phone_number.value,
-        notifications: notification.value,
-        password: masterForm.password.value
-      });
-      userSignup.classList.add("hide");
-   };
+        alert("Вы зарегистрировались");
+        var notification = document.getElementById("notification2");
+        if (notification.checked) {
+          notification.value = true;
+        } else {
+          notification.value = false;
+        }
+        db.collection("masters").add({
+          full_name: masterForm.full_name.value,
+          email: masterForm.email.value,
+          salon_name: masterForm.salonname.value,
+          phone_number: phoneform.phone_number.value,
+          notifications: notification.value,
+          password: masterForm.password.value,
+        });
+        userSignup.classList.add("hide");
+      }
     })
     .catch(function (error) {
       alert(error.message);
