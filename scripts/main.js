@@ -1,11 +1,16 @@
  const db = firebase.firestore();
 const form = document.getElementById("add-salon");
+const masterform = document.getElementById("add-master");
 const phoneform = document.getElementById("phone_form");
 const userSignup = document.querySelector(".user-signup1");
 
 form.addEventListener("submit", (e) => {
   userSignup.classList.remove("hide");
   e.preventDefault();
+});
+masterform.addEventListener("submit", (o) => {
+  userSignup.classList.remove("hide");
+  o.preventDefault();
 });
    window.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
@@ -56,6 +61,7 @@ function codeverify() {
     .then(function (result) {
       var user = result.user;
       console.log(user);
+   if(masterform.classlist.contains("hide")){
       alert("Вы зарегистрировались");
       var notifications = document.getElementById("notification1");
       if (notifications.checked) {
@@ -72,6 +78,25 @@ function codeverify() {
         password: form.password.value
       });
       userSignup.classList.add("hide");
+   }
+   else{
+         alert("Вы зарегистрировались");
+      var notification = document.getElementById("notification2");
+      if (notification.checked) {
+        notification.value = true;
+      } else {
+        notification.value = false;
+      };
+      db.collection("masters").add({
+        full_name: form.full_name.value,
+        email: form.email.value,
+        salon_name: form.salonname.value,
+        phone_number: phoneform.phone_number.value,
+        notifications: notification.value,
+        password: form.password.value
+      });
+      userSignup.classList.add("hide");
+   };
     })
     .catch(function (error) {
       alert(error.message);
