@@ -25,7 +25,8 @@ const userSignup = document.querySelector(".user-signup1");
 
 form.addEventListener("submit", (e) => {
    e.preventDefault();
-  let sEmail = document.querySelector(".s-email");
+  var sEmail = document.querySelector(".s-email");
+  console.log(sEmail);
   var x = false;
   db.collection("salons")
     .get()
@@ -45,7 +46,8 @@ form.addEventListener("submit", (e) => {
  
 });
 masterForm.addEventListener("submit", (o) => {
-  let mEmail = document.querySelector(".m-email");
+  var mEmail = document.querySelector(".m-email");
+  console.log(mEmail);
   var x = false;
   db.collection("masters")
     .get()
