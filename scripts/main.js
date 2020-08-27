@@ -1,5 +1,4 @@
-const db = firebase.firestore();
-const salons = document.querySelector(".salons1");
+-dbconst salons = document.querySelector(".salons1");
 const masters = document.querySelector(".masters1");
 const salonform = document.querySelector(".salon");
 const masterForm = document.querySelector(".master");
