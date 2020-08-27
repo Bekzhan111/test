@@ -21,11 +21,10 @@ masters.addEventListener("click", () => {
 const form = document.getElementById("add-salon");
 const phoneform = document.getElementById("phone_form");
 const userSignup = document.querySelector(".user-signup1");
-var x = new Boolean(false);
 
 form.addEventListener("submit", (e) => {
   let sEmail = document.querySelector(".s-email");
-
+  var x = false;
   db.collection("salons")
     .get()
     .then((snapshot) => {
@@ -37,15 +36,15 @@ form.addEventListener("submit", (e) => {
       });
     });
     if (x) {
-      alert("Пользователь с такой почтой уже существует");
-    } else {
       userSignup.classList.remove("hide");
+    } else {
+      alert("Пользователь с такой почтой уже существует");
     }
   e.preventDefault();
 });
 masterForm.addEventListener("submit", (o) => {
   let mEmail = document.querySelector(".m-email");
-
+  var x = false;
   db.collection("masters")
     .get()
     .then((snapshot) => {
@@ -57,10 +56,10 @@ masterForm.addEventListener("submit", (o) => {
       });
     });
   if (x) {
-    alert("Пользователь с такой почтой уже существует");
-  } else {
-    userSignup.classList.remove("hide");
-  }
+      userSignup.classList.remove("hide");
+    } else {
+      alert("Пользователь с такой почтой уже существует");
+    }
   o.preventDefault();
 });
 
