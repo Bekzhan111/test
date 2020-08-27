@@ -2,6 +2,7 @@ const form = document.getElementById("add-salon");
 const phoneform = document.getElementById("phone_form");
 const userSignup = document.querySelector(".user-signup1");
 
+
 window.onload = function () {
   render();
 };
@@ -38,29 +39,30 @@ function codeverify() {
     .then(function (result) {
       var user = result.user;
       console.log(user);
+      db.collection("salons").add({
+        full_name: fullName,
+        email: email,
+        salon_name: salonname,
+        phone_number: phoneform.phone_number.value,
+        notifications: notifications,
+        password: password,
+      });
     })
     .catch(function (error) {
       alert(error.message);
     });
-    
-  db.collection("salons").add({
-    full_name: fullName,
-    email: email,
-    salon_name: salonname,
-    phone_number: phoneform.phone_number.value,
-    notifications: notifications,
-    password: password,
-  });
+
   e.preventDefault();
   window.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
       userSignup.classList.add("hide");
     }
   });
-};
+}
 
 form.addEventListener("submit", (e) => {
   userSignup.classList.remove("hide");
+  e.preventDefault();
   var notifications = document.getElementById("notification1");
   if (notifications.checked) {
     notifications.value = true;
@@ -68,18 +70,15 @@ form.addEventListener("submit", (e) => {
     notifications.value = false;
   }
 
-  var fullName = document.getelementbyName(full_name).value;
-  var salonname = document.getelementbyName(salonname).value;
-  var email = document.getelementbyName(email).value;
-  var password = document.getelementbyName(password).value;
-  var notifications = document.getelementbyName(notifications).value;
+  var fullName = document.getElementById("full_name").value;
+  var salonname = document.getElementById("salonname").value;
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
 
-  e.preventDefault();
-})
-  userSignup.addEventListener("click", (event) => {
-    const target = event.target;
+  console.log(fullName);
+  console.log(salonname);
+  console.log(email);
+  console.log(password);
+  console.log(notifications.value);
 
-    if (target.classList.contains("modal-close") || target === userSignup) {
-      userSignup.classList.add("hide");
-    }
-  })
+});

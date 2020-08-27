@@ -88,26 +88,26 @@ maximum-scale=1.0, user-scalable=no"
           <input
             type="text"
             placeholder="Имя и фамилия"
-            name="full_name"
+            id="full_name"
             class="input"
           /><br />
           <input
             type="text"
             placeholder="Название салона (не обязательно)"
-            name="salonname"
+            id="salonname"
             class="input"
           /><br />
           <input
             type="email"
             placeholder="E-mail"
-            name="email"
+            id="email"
             class="input"
             required
           /><br />
           <input
             type="password"
             placeholder="Пароль"
-            name="password"
+            id="password"
             class="input"
             required
           /><br />
@@ -128,7 +128,7 @@ maximum-scale=1.0, user-scalable=no"
             <input
               id="notification2"
               type="checkbox"
-              name="notifications"
+              id="notifications"
               class="checkbox"
               checked
             />
@@ -137,23 +137,31 @@ maximum-scale=1.0, user-scalable=no"
           <button class="rstmaster r-btn">Подтвердить</button>
         </form>
       </div>
-              <div class="user-signup1 hide">
+      <div class="user-signup1 hide">
         <div class="modal__block">
           <h3>Введите номер телефона, чтобы создать аккаунт</h3>
           <button class="modal-close">&#10008;</button>
-        <form class="phone_form" id="phone_form">
-         <input type="tel" id="phone_number" name="phone_number" placeholder="+7 *** *** ** **">
+          <form class="phone_form" id="phone_form">
+            <input
+              type="tel"
+              id="phone_number"
+              name="phone_number"
+              placeholder="+7 *** *** ** **"
+            />
             <div id="recaptcha-container"></div>
-            <button class="submit-btn" onclick="phoneAuth();">Отправить код</button>
+            <button class="submit-btn" onclick="phoneAuth();">
+              Отправить код
+            </button>
           </form>
-            <h3>Введите код</h3>
-            <form>
-            <input type="text" id="verificationCode">
-                <button type="button" onclick="codeverify();">Зарегистрироваться</button>
-            </form>
+          <h3>Введите код</h3>
+          <form>
+            <input type="text" id="verificationCode" />
+            <button type="button" onclick="codeverify();">
+              Зарегистрироваться
+            </button>
+          </form>
         </div>
       </div>
-
     </section>
     <!-- /.register-block -->
     <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
@@ -176,6 +184,6 @@ maximum-scale=1.0, user-scalable=no"
       const db = firebase.firestore();
       const auth = firebase.auth();
     </script>
-      <script type="text/javascript" src="scripts/main.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
   </body>
 </html>
