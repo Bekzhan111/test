@@ -35,6 +35,7 @@ form.addEventListener("submit", (e) => {
         var firestoreEmail = doc.data().email;
         if (firestoreEmail == sEmail.value) {
           x = true;
+          console.log(x);
         }
   console.log(firestoreEmail);
       });
@@ -57,6 +58,7 @@ masterForm.addEventListener("submit", (o) => {
         var firestoreMEmail = doc.data().email;
         if (firestoreMEmail == mEmail.value) {
           x = true;
+          console.log(x);
         }
         console.log(firestoreMEmail);
       });
