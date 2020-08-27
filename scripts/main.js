@@ -1,6 +1,15 @@
 const form = document.getElementById("add-salon");
 const phoneform = document.getElementById("phone_form");
 const userSignup= document.querySelector(".user-signup1");
+
+window.onload=function () {
+  render();
+};
+function render() {
+    window.recaptchaVerifier=new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    recaptchaVerifier.render();
+}
+
 form.addEventListener("submit", (e) => {
     userSignup.classList.remove('hide');
  var notifications = document.getElementById("notification1");
@@ -22,13 +31,6 @@ form.addEventListener("submit", (e) => {
     userSignup.classList.add("hide");
   }
 });
-window.onload=function () {
-  render();
-};
-function render() {
-    window.recaptchaVerifier=new firebase.auth.RecaptchaVerifier('recaptcha-container');
-    recaptchaVerifier.render();
-}
 function phoneAuth() {
     //get the number
     var number=document.getElementById('number').value;
