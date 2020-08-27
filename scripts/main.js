@@ -39,7 +39,7 @@ function codeverify() {
       var user = result.user;
       console.log(user);
       db.collection("salons").add({
-        full_name: form.full_Name.value,
+        full_name: form.full_name.value,
         email: form.email.value,
         salon_name: salonname.value,
         phone_number: phoneform.phone_number.value,
