@@ -24,6 +24,7 @@ const phoneform = document.getElementById("phone_form");
 const userSignup = document.querySelector(".user-signup1");
 
 form.addEventListener("submit", (e) => {
+   e.preventDefault();
   let sEmail = document.querySelector(".s-email");
   var x = false;
   db.collection("salons")
@@ -41,7 +42,7 @@ form.addEventListener("submit", (e) => {
     } else {
       alert("Пользователь с такой почтой уже существует");
     }
-  e.preventDefault();
+ 
 });
 masterForm.addEventListener("submit", (o) => {
   let mEmail = document.querySelector(".m-email");
