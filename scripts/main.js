@@ -36,7 +36,7 @@ form.addEventListener("submit", (e) => {
         }
       });
     });
-    if (x) {
+    if (x==false) {
       userSignup.classList.remove("hide");
     } else {
       alert("Пользователь с такой почтой уже существует");
