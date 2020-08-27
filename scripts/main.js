@@ -18,7 +18,6 @@ masters.addEventListener("click", () => {
 });
 const db = firebase.firestore();
 const form = document.getElementById("add-salon");
-const masterform = document.getElementById("add-master");
 const phoneform = document.getElementById("phone_form");
 const userSignup = document.querySelector(".user-signup1");
 
@@ -26,7 +25,7 @@ form.addEventListener("submit", (e) => {
   userSignup.classList.remove("hide");
   e.preventDefault();
 });
-masterform.addEventListener("submit", (o) => {
+masterForm.addEventListener("submit", (o) => {
   userSignup.classList.remove("hide");
   o.preventDefault();
 });
@@ -106,12 +105,12 @@ function codeverify() {
         notification.value = false;
       };
       db.collection("masters").add({
-        full_name: masterform.full_name.value,
-        email: masterform.email.value,
-        salon_name: masterform.salonname.value,
+        full_name: masterForm.full_name.value,
+        email: masterForm.email.value,
+        salon_name: masterForm.salonname.value,
         phone_number: phoneform.phone_number.value,
         notifications: notification.value,
-        password: masterform.password.value
+        password: masterForm.password.value
       });
       userSignup.classList.add("hide");
    };
