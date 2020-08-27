@@ -1,3 +1,4 @@
+const db = firebase.firestore();
 const salons = document.querySelector(".salons1");
 const masters = document.querySelector(".masters1");
 const salonform = document.querySelector(".salon");
@@ -17,7 +18,6 @@ masters.addEventListener("click", () => {
   salonform.classList.add("hide");
 });
 
-const db = firebase.firestore();
 const form = document.getElementById("add-salon");
 const phoneform = document.getElementById("phone_form");
 const userSignup = document.querySelector(".user-signup1");
@@ -36,11 +36,11 @@ form.addEventListener("submit", (e) => {
         }
       });
     });
-  if (x) {
-    userSignup.classList.remove("hide");
-  } else {
-    alert("Пользователь с такой почтой уже существует");
-  }
+    if (x) {
+      alert("Пользователь с такой почтой уже существует");
+    } else {
+      userSignup.classList.remove("hide");
+    }
   e.preventDefault();
 });
 masterForm.addEventListener("submit", (o) => {
