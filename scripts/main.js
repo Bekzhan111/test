@@ -79,7 +79,7 @@ function codeverify() {
     .then(function (result) {
       var user = result.user;
       console.log(user);
-   if(masterform.classlist.contains("hide")){
+   if(masterForm.classlist.contains("hide")){
       alert("Вы зарегистрировались");
       var notifications = document.getElementById("notification1");
       if (notifications.checked) {
