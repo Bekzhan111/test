@@ -1,5 +1,6 @@
-const db = firebase.firestore();
-db.settings({ timestampsInSnapshots: true});
+const database = firebase.firestore();
+database.settings({ timestampsInSnapshots: true });
+
 const salons = document.querySelector(".salons1");
 const masters = document.querySelector(".masters1");
 const salonform = document.querySelector(".salon");
@@ -24,50 +25,43 @@ const phoneform = document.getElementById("phone_form");
 const userSignup = document.querySelector(".user-signup1");
 
 form.addEventListener("submit", (e) => {
-   e.preventDefault();
+  e.preventDefault();
   var sEmail = document.querySelector(".s-email").value;
-  console.log(sEmail);
-  var x = false;
-  db.collection("salons")
+  let x = false;
+  database.collection("salons")
     .get()
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         var firestoreEmail = doc.data().email;
         if (firestoreEmail == sEmail.value) {
           x = true;
-          console.log(x);
         }
-  console.log(firestoreEmail);
       });
     });
-    if (!x) {
-      alert("Пользователь с такой почтой уже существует");
-    } else {
-      userSignup.classList.remove("hide");
-    }
- 
+  if (x == true) {
+    alert("Пользователь с такой почтой уже существует");
+  } else {
+    userSignup.classList.remove("hide");
+  }
 });
 masterForm.addEventListener("submit", (o) => {
   var mEmail = document.querySelector(".m-email").value;
-  console.log(mEmail);
-  var x = false;
-  db.collection("masters")
+  let x = false;
+  database.collection("masters")
     .get()
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         var firestoreMEmail = doc.data().email;
-        if (firestoreMEmail == mEmail.value) {
+        if (firestoreMEmail.value == mEmail.value) {
           x = true;
-          console.log(x);
         }
-        console.log(firestoreMEmail);
       });
-    });  
+    });
   if (!x) {
-      alert("Пользователь с такой почтой уже существует");
-    } else {
-      userSignup.classList.remove("hide");
-    }
+    alert("Пользователь с такой почтой уже существует");
+  } else {
+    userSignup.classList.remove("hide");
+  }
   o.preventDefault();
 });
 
@@ -128,7 +122,7 @@ function codeverify() {
         } else {
           notifications.value = false;
         }
-        db.collection("salons").add({
+        database.collection("salons").add({
           full_name: form.full_name.value,
           email: form.email.value,
           salon_name: form.salonname.value,
@@ -145,7 +139,7 @@ function codeverify() {
         } else {
           notification.value = false;
         }
-        db.collection("masters").add({
+        database.collection("masters").add({
           full_name: masterForm.full_name.value,
           email: masterForm.email.value,
           salon_name: masterForm.salonname.value,
