@@ -35,6 +35,9 @@ form.addEventListener("submit", (e) => {
         }
       });
     });
+  console.log(sEmail);
+  console.log(firestoreEmail);
+  console.log(x);
     if (x) {
       userSignup.classList.remove("hide");
     } else {
@@ -54,7 +57,10 @@ masterForm.addEventListener("submit", (o) => {
           x = true;
         }
       });
-    });
+    });  
+  console.log(sEmail);
+  console.log(firestoreEmail);
+  console.log(x);
   if (x) {
       userSignup.classList.remove("hide");
     } else {
