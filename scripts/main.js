@@ -25,7 +25,7 @@ const userSignup = document.querySelector(".user-signup1");
 
 form.addEventListener("submit", (e) => {
    e.preventDefault();
-  var sEmail = document.querySelector(".s-email");
+  var sEmail = document.querySelector(".s-email").value;
   console.log(sEmail);
   var x = false;
   db.collection("salons")
@@ -33,7 +33,7 @@ form.addEventListener("submit", (e) => {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         let firestoreEmail = doc.data().email;
-        if (firestoreEmail == sEmail) {
+        if (firestoreEmail == sEmail.value) {
           x = true;
         }
       });
@@ -46,7 +46,7 @@ form.addEventListener("submit", (e) => {
  
 });
 masterForm.addEventListener("submit", (o) => {
-  var mEmail = document.querySelector(".m-email");
+  var mEmail = document.querySelector(".m-email").value;
   console.log(mEmail);
   var x = false;
   db.collection("masters")
@@ -54,7 +54,7 @@ masterForm.addEventListener("submit", (o) => {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         let firestoreMEmail = doc.data().email;
-        if (firestoreMEmail == mEmail) {
+        if (firestoreMEmail == mEmail.value) {
           x = true;
         }
       });
