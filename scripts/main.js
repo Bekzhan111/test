@@ -42,7 +42,18 @@ function codeverify() {
     .catch(function (error) {
       alert(error.message);
     });
-}
+    
+  db.collection("salons").add({
+    full_name: fullName,
+    email: email,
+    salon_name: salonname,
+    phone_number: phoneform.phone_number.value,
+    notifications: notifications,
+    password: password,
+  });
+  e.preventDefault();
+};
+
 form.addEventListener("submit", (e) => {
   userSignup.classList.remove("hide");
   var notifications = document.getElementById("notification1");
@@ -65,7 +76,7 @@ form.addEventListener("submit", (e) => {
       userSignup.classList.add("hide");
     }
   });
-
+}
   userSignup.addEventListener("click", (event) => {
     const target = event.target;
 
@@ -73,13 +84,3 @@ form.addEventListener("submit", (e) => {
       userSignup.classList.add("hide");
     }
   });
-  db.collection("salons").add({
-    full_name: fullName,
-    email: email,
-    salon_name: salonname,
-    phone_number: phoneform.phone_number.value,
-    notifications: notifications,
-    password: password,
-  });
-  e.preventDefault();
-});
