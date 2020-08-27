@@ -30,7 +30,7 @@ form.addEventListener("submit", (e) => {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         let firestoreEmail = doc.data().email;
-        if (firestoreEmail === sEmail) {
+        if (firestoreEmail == sEmail) {
           x = true;
         }
       });
@@ -50,7 +50,7 @@ masterForm.addEventListener("submit", (o) => {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         let firestoreMEmail = doc.data().email;
-        if (firestoreMEmail === mEmail) {
+        if (firestoreMEmail == mEmail) {
           x = true;
         }
       });
