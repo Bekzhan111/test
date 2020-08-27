@@ -12,6 +12,12 @@ form.addEventListener("submit", (e) => {
   } else {
     notifications.value = false;
   }
+});
+   window.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      userSignup.classList.add("hide");
+    }
+  });
  window.onload = function () {
   render();
 };
@@ -61,9 +67,3 @@ function codeverify() {
       alert(error.message);
     });
 }
-});
-   window.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      userSignup.classList.add("hide");
-    }
-  });
