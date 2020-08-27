@@ -22,6 +22,26 @@ const phoneform = document.getElementById("phone_form");
 const userSignup = document.querySelector(".user-signup1");
 
 form.addEventListener("submit", (e) => {
+  function renderEmail(doc) {
+    let firestoreEmail = doc.data().email;
+    let sEmail = document.querySelector(".s-email");
+  }
+
+  db.collection("salons")
+    .get()
+    .then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        renderEmail(doc);
+      });
+    });
+
+  db.collection("masters")
+    .get()
+    .then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        renderEmail(doc);
+      });
+    });
   userSignup.classList.remove("hide");
   e.preventDefault();
 });
@@ -29,6 +49,7 @@ masterForm.addEventListener("submit", (o) => {
   userSignup.classList.remove("hide");
   o.preventDefault();
 });
+
 window.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     userSignup.classList.add("hide");
