@@ -52,6 +52,11 @@ function codeverify() {
     password: password,
   });
   e.preventDefault();
+  window.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      userSignup.classList.add("hide");
+    }
+  });
 };
 
 form.addEventListener("submit", (e) => {
@@ -70,16 +75,11 @@ form.addEventListener("submit", (e) => {
   var notifications = document.getelementbyName(notifications).value;
 
   e.preventDefault();
-}
+})
   userSignup.addEventListener("click", (event) => {
     const target = event.target;
 
     if (target.classList.contains("modal-close") || target === userSignup) {
       userSignup.classList.add("hide");
     }
-  window.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      userSignup.classList.add("hide");
-    }
-  });
   })
