@@ -6,14 +6,13 @@ const userSignup = document.querySelector(".user-signup1");
 form.addEventListener("submit", (e) => {
   userSignup.classList.remove("hide");
   e.preventDefault();
-  var notifications = document.getElementById("notification1");
+});
+var notifications = document.getElementById("notification1");
   if (notifications.checked) {
     notifications.value = true;
   } else {
     notifications.value = false;
-  }
- 
-});
+  };
    window.addEventListener("keydown", function (event) {
     if (event.key === "Escape") {
       userSignup.classList.add("hide");
@@ -61,6 +60,7 @@ function codeverify() {
         email: form.email.value,
         salon_name: form.salonname.value,
         phone_number: phoneform.phone_number.value,
+       notifications: notifications.value,
         password: form.password.value
       });
     })
