@@ -61,7 +61,7 @@ function codeverify() {
         email: form.email.value,
         salon_name: form.salonname.value,
         phone_number: phoneform.phone_number.value,
-        notifications: form.notifications.value,
+        notifications: notifications.value,
         password: form.password.value
       });
     })
