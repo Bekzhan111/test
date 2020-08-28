@@ -1,5 +1,4 @@
-const database = firebase.firestore();
-database.settings({ timestampsInSnapshots: true });
+const db = firebase.firestore();
 
 const salons = document.querySelector(".salons1");
 const masters = document.querySelector(".masters1");
@@ -26,43 +25,42 @@ const userSignup = document.querySelector(".user-signup1");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  var bool = 0;
   var sEmail = document.querySelector(".s-email").value;
-  let x = false;
-  database.collection("salons")
-    .get()
-    .then((snapshot) => {
-      snapshot.docs.forEach((doc) => {
-        var firestoreEmail = doc.data().email;
-        if (firestoreEmail == sEmail.value) {
-          x = true;
-        }
-      });
+   db.collection("salons").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        var firebaseEmail=doc.data().email;
+          if(sEmail==firebaseEmail){
+            bool=bool+1;
+          }
+        });
     });
-  if (x == true) {
-    alert("Пользователь с такой почтой уже существует");
-  } else {
-    userSignup.classList.remove("hide");
+  if(bool>=1){
+  alert("Пользователь с таким адресом уже существует");
   }
+  else{
+  userSignup.classList.remove("hide");
+  };
 });
 masterForm.addEventListener("submit", (o) => {
-  var mEmail = document.querySelector(".m-email").value;
-  let x = false;
-  database.collection("masters")
-    .get()
-    .then((snapshot) => {
-      snapshot.docs.forEach((doc) => {
-        var firestoreMEmail = doc.data().email;
-        if (firestoreMEmail.value == mEmail.value) {
-          x = true;
-        }
-      });
-    });
-  if (!x) {
-    alert("Пользователь с такой почтой уже существует");
-  } else {
-    userSignup.classList.remove("hide");
-  }
   o.preventDefault();
+  var booll = 0;
+  var mEmail = document.querySelector(".m-email").value;
+ db.collection("masters").get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        var firebaseEmaill=doc.data().email;
+          if(mEmail==firebaseEmaill){
+            booll=booll+1;
+          }
+        });
+    });
+  if(booll>=1){
+  alert("Пользователь с таким адресом уже существует");
+  }
+  else{
+  userSignup.classList.remove("hide");
+  };
+  
 });
 
 window.addEventListener("keydown", function (event) {
@@ -122,7 +120,7 @@ function codeverify() {
         } else {
           notifications.value = false;
         }
-        database.collection("salons").add({
+        db.collection("salons").add({
           full_name: form.full_name.value,
           email: form.email.value,
           salon_name: form.salonname.value,
@@ -139,7 +137,7 @@ function codeverify() {
         } else {
           notification.value = false;
         }
-        database.collection("masters").add({
+        db.collection("masters").add({
           full_name: masterForm.full_name.value,
           email: masterForm.email.value,
           salon_name: masterForm.salonname.value,
