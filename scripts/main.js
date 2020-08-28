@@ -25,53 +25,51 @@ const userSignup = document.querySelector(".user-signup1");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  var bool;
+  var bool = false;
   var sEmail = document.querySelector(".s-email").value;
-   db.collection("salons").get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        var firebaseEmail=doc.data().email;
-          if(sEmail===firebaseEmail)
-          {
-            bool=bool+1;
-          }
-        else
-        {
-        bool=0;
-        };
-           if(bool==0){
-                userSignup.classList.remove("hide");
-  }
-  else{
-        alert("Пользователь с таким адресом уже существует");
 
-  };
-        });
-    }); 
+  db.collection("salons")
+    .get()
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        firebaseEmail = doc.data().email;
+        if (sEmail == firebaseEmail) {
+          return (bool = true);
+        }
+        function emails() {
+          if (bool) {
+            alert("Пользователь с такой почтой уже существует!");
+          } else {
+            userSignup.classList.remove("hide");
+          }
+        }
+        emails();
+      });
+    });
 });
 masterForm.addEventListener("submit", (o) => {
   o.preventDefault();
-  var booll = 0;
+  var bool1 = false;
   var mEmail = document.querySelector(".m-email").value;
-     db.collection("masters").get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        var firebaseEmaill=doc.data().email;
-          if(mEmail===firebaseEmaill)
-          {
-            booll=booll+1;
-          }
-        else
-        {
-        booll=0;
-        };
-           if(booll==0){
-                userSignup.classList.remove("hide");
-  }
-  else{
-        alert("Пользователь с таким адресом уже существует");
 
-  };
-        });
-    });   
+  db.collection("masters")
+    .get()
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        masterEmail = doc.data().email;
+        if (mEmail == masterEmail) {
+          return (bool1 = true);
+        }
+        function emails1() {
+          if (bool1) {
+            alert("Пользователь с такой почтой уже существует!");
+          } else {
+            userSignup.classList.remove("hide");
+          }
+        }
+        emails1();
+      });
+    });
 });
 
 window.addEventListener("keydown", function (event) {
