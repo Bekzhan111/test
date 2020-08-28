@@ -25,26 +25,28 @@ const userSignup = document.querySelector(".user-signup1");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  var bool = 0;
+  var bool;
   var sEmail = document.querySelector(".s-email").value;
    db.collection("salons").get().then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
         var firebaseEmail=doc.data().email;
-        console.log(firebaseEmail);
-          if(sEmail==firebaseEmail){
+          if(sEmail===firebaseEmail)
+          {
             bool=bool+1;
           }
-        else{
-        bool=1;
-        }
-        });
-    });
-  if(bool>=1){
-  alert("Пользователь с таким адресом уже существует");
+        else
+        {
+        bool=0;
+        };
+           if(bool==0){
+                userSignup.classList.remove("hide");
   }
   else{
-  userSignup.classList.remove("hide");
+        alert("Пользователь с таким адресом уже существует");
+
   };
+        });
+    }); 
 });
 masterForm.addEventListener("submit", (o) => {
   o.preventDefault();
