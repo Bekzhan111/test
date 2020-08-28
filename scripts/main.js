@@ -30,9 +30,13 @@ form.addEventListener("submit", (e) => {
    db.collection("salons").get().then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
         var firebaseEmail=doc.data().email;
+        console.log(firebaseEmail);
           if(sEmail==firebaseEmail){
             bool=bool+1;
           }
+        else{
+        bool=1;
+        }
         });
     });
   if(bool>=1){
