@@ -52,21 +52,26 @@ masterForm.addEventListener("submit", (o) => {
   o.preventDefault();
   var booll = 0;
   var mEmail = document.querySelector(".m-email").value;
- db.collection("masters").get().then(function(querySnapshot) {
+     db.collection("masters").get().then(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
         var firebaseEmaill=doc.data().email;
-          if(mEmail==firebaseEmaill){
+          if(mEmail===firebaseEmaill)
+          {
             booll=booll+1;
           }
-        });
-    });
-  if(booll>=1){
-  alert("Пользователь с таким адресом уже существует");
+        else
+        {
+        booll=0;
+        };
+           if(booll==0){
+                userSignup.classList.remove("hide");
   }
   else{
-  userSignup.classList.remove("hide");
+        alert("Пользователь с таким адресом уже существует");
+
   };
-  
+        });
+    });   
 });
 
 window.addEventListener("keydown", function (event) {
